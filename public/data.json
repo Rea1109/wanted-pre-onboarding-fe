@@ -1,0 +1,37 @@
+{
+    "feeds" : [
+        {
+            "id" : 1,
+            "writer" : "wanted",
+            "imageUrl": ["https://source.unsplash.com/random/600x500"],
+            "content" : "hello wanted",
+            "comment":[{
+                "commentPk" : 11,
+                "commentWriter": "wanted_fe",
+                "comment" : "hello react"
+            }]
+        },
+        {
+            "id" : 2,
+            "writer" : "wanted",
+            "imageUrl": ["https://source.unsplash.com/random/900x500"],
+            "content" : "hello wanted",
+            "comment":[{
+                "commentPk" : 21,
+                "commentWriter": "wanted_fe",
+                "comment" : "hello react"
+            }]
+        },
+        {
+            "id" : 3,
+            "writer" : "wanted",
+            "imageUrl": ["https://source.unsplash.com/random/700x1080"],
+            "content" : "hello wanted",
+            "comment":[{
+                "commentPk" : 31,
+                "commentWriter": "wanted_fe",
+                "comment" : "hello react"
+            }]
+        }
+    ]
+}

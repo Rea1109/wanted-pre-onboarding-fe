@@ -1,8 +1,15 @@
 import React from 'react';
-import PreAssignmentGuide from './pages/PreAssignmentGuide';
+import { Routes, Route } from 'react-router-dom';
+import Login from './pages/Login';
+import Feeds from './pages/Feeds';
 
 function App() {
-  return <PreAssignmentGuide />;
+    return (
+        <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/" element={<Feeds />} />
+        </Routes>
+    );
 }
 
 export default App;
