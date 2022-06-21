@@ -1,38 +1,58 @@
 import React, { useRef, useState } from 'react';
-import { withAuth } from '../commons/hoc/withAuth';
+import axios from 'axios';
 import styled from 'styled-components';
 import theme from '../styles/theme';
 import logo from '../assets/images/instagram_logo.png';
 import { checkFormatId, checkFormatPwd } from '../commons/utility';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const id = useRef(null);
     const pwd = useRef(null);
-    const [isValidation, setIsValidation] = useState({ inputId: true, inputPwd: true });
     const [isAble, setIsAble] = useState(false);
+    const [isId, setIsId] = useState(true);
+    const [isPwd, setIsPwd] = useState(true);
+
+    const route = useNavigate();
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        validationCheck() || console.log('로그인 불가능');
+        validationCheck() && login();
     };
 
-    const handleBlur = (event) => {
-        event.target.name === 'id'
-            ? setIsValidation((pre) => ({
-                  ...pre,
-                  inputId: checkFormatId(event.target.value),
-              }))
-            : setIsValidation((pre) => ({
-                  ...pre,
-                  inputPwd: checkFormatPwd(event.target.value),
-              }));
+    const login = async () => {
+        try {
+            const result = await axios.get(`http://localhost:3001/users?email=${id.current.value}`);
+            if (result.data.length === 0) {
+                alert('아이디 비밀번호를 확인해주세요.');
+                return;
+            }
+            alert(`안녕하세요 ${result.data[0].name} 님`);
+            localStorage.setItem('name', result.data[0].name);
+            localStorage.setItem('isLogin', 'true');
+            route('/');
+        } catch (error) {
+            console.log(error);
+        }
     };
 
-    const validationCheck = () => {
-        console.log(id.current.value === '' || pwd.current.value === '');
-        console.log(!isValidation.inputId || !isValidation.inputPwd);
-        if (id.current.value === '' || pwd.current.value === '') return false;
-        if (!isValidation.inputId || !isValidation.inputPwd) return false;
+    const validationCheck = (type) => () => {
+        type === 'id'
+            ? checkFormatId(id.current.value)
+                ? setIsId(true)
+                : setIsId(false)
+            : checkFormatPwd(pwd.current.value)
+            ? setIsPwd(true)
+            : setIsPwd(false);
+
+        if (!checkFormatId(id.current.value)) {
+            setIsAble(false);
+            return false;
+        }
+        if (!checkFormatPwd(pwd.current.value)) {
+            setIsAble(false);
+            return false;
+        }
 
         setIsAble(true);
         return true;
@@ -49,16 +69,16 @@ const Login = () => {
                     type="text"
                     placeholder="전화번호, 사용자 이름 또는 이메일"
                     ref={id}
-                    onBlur={handleBlur}
-                    error={!isValidation.inputId}
+                    onChange={validationCheck('id')}
+                    helpText={isId}
                 />
                 <Input
                     name="pwd"
                     type="text"
                     placeholder="대문자, 숫자, 특수문자 포함 8자리 이상"
                     ref={pwd}
-                    onBlur={handleBlur}
-                    error={!isValidation.inputPwd}
+                    onChange={validationCheck('pwd')}
+                    helpText={isPwd}
                 />
                 <Button isAble={isAble}>로그인</Button>
             </LoginForm>
@@ -66,7 +86,7 @@ const Login = () => {
     );
 };
 
-export default withAuth(Login);
+export default Login;
 
 const LoginWrapper = styled.section`
     position: absolute;
@@ -107,7 +127,7 @@ const Input = styled.input`
     height: 42px;
     margin: 15px 0px;
     padding: 0px 0px 0px 15px;
-    border: 1px solid ${({ error }) => (error ? 'red' : theme.borderColor)};
+    border: 1px solid ${({ helpText }) => (helpText ? theme.borderColor : 'red')};
     border-radius: 4px;
 `;
 

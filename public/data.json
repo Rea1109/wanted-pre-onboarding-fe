@@ -1,4 +1,16 @@
 {
+    "users" : [
+        {   
+            "email" : "wanted@gmail.com",
+            "pwd" : "aBcd123@!",
+            "name" : "wanted"
+        },
+        {   
+            "email" : "rea@gmail.com",
+            "pwd" : "aBcd123@!",
+            "name" : "rea"
+        }
+    ],
     "feeds" : [
         {
             "id" : 1,
