@@ -1,49 +1,83 @@
 {
-    "users" : [
-        {   
-            "email" : "wanted@gmail.com",
-            "pwd" : "aBcd123@!",
-            "name" : "wanted"
+  "users": [
+    {
+      "email": "wanted@gmail.com",
+      "pwd": "aBcd123@!",
+      "name": "wanted"
+    },
+    {
+      "email": "rea@gmail.com",
+      "pwd": "aBcd123@!",
+      "name": "rea"
+    }
+  ],
+  "feeds": [
+    {
+      "id": 1,
+      "writer": "wanted",
+      "imageUrl": "https://source.unsplash.com/random/600x500",
+      "content": "hello wanted",
+      "likeCount": 30,
+      "comment": [
+        {
+          "commentPk": 11,
+          "commentWriter": "wanted_fe",
+          "comment": "hello react"
         },
-        {   
-            "email" : "rea@gmail.com",
-            "pwd" : "aBcd123@!",
-            "name" : "rea"
+        {
+          "commentPk": 12,
+          "commentWriter": "rea",
+          "comment": "bye react"
         }
-    ],
-    "feeds" : [
+      ]
+    },
+    {
+      "id": 2,
+      "writer": "wanted",
+      "imageUrl": "https://source.unsplash.com/random/900x500",
+      "content": "hello wanted",
+      "likeCount": 3,
+      "comment": [
         {
-            "id" : 1,
-            "writer" : "wanted",
-            "imageUrl": ["https://source.unsplash.com/random/600x500"],
-            "content" : "hello wanted",
-            "comment":[{
-                "commentPk" : 11,
-                "commentWriter": "wanted_fe",
-                "comment" : "hello react"
-            }]
+          "commentPk": 21,
+          "commentWriter": "aidkr",
+          "comment": "hello aidkr"
         },
         {
-            "id" : 2,
-            "writer" : "wanted",
-            "imageUrl": ["https://source.unsplash.com/random/900x500"],
-            "content" : "hello wanted",
-            "comment":[{
-                "commentPk" : 21,
-                "commentWriter": "wanted_fe",
-                "comment" : "hello react"
-            }]
+          "commentPk": 22,
+          "commentWriter": "rea",
+          "comment": "?? who are you"
         },
         {
-            "id" : 3,
-            "writer" : "wanted",
-            "imageUrl": ["https://source.unsplash.com/random/700x1080"],
-            "content" : "hello wanted",
-            "comment":[{
-                "commentPk" : 31,
-                "commentWriter": "wanted_fe",
-                "comment" : "hello react"
-            }]
+          "commentPk": 23,
+          "commentWriter": "rea",
+          "comment": " a... json 때문에 전체 리랜더링 되는구나"
+        },
+        {
+          "commentPk": 24,
+          "commentWriter": "rea",
+          "comment": "이걸 어케.. 해결 해야하는가.."
         }
-    ]
+      ]
+    },
+    {
+      "id": 3,
+      "writer": "wanted",
+      "imageUrl": "https://source.unsplash.com/random/700x1080",
+      "content": "hello wanted",
+      "likeCount": 6,
+      "comment": [
+        {
+          "commentPk": 31,
+          "commentWriter": "wanted_fe",
+          "comment": "hello react"
+        },
+        {
+          "commentPk": 32,
+          "commentWriter": "rea",
+          "comment": "어쩔수 없구만..."
+        }
+      ]
+    }
+  ]
 }

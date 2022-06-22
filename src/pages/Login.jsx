@@ -22,7 +22,9 @@ const Login = () => {
 
     const login = async () => {
         try {
-            const result = await axios.get(`http://localhost:3001/users?email=${id.current.value}`);
+            const result = await axios.get(
+                `http://localhost:3001/users?email=${id.current.value}`
+            );
             if (result.data.length === 0) {
                 alert('아이디 비밀번호를 확인해주세요.');
                 return;
@@ -32,6 +34,7 @@ const Login = () => {
             localStorage.setItem('isLogin', 'true');
             route('/');
         } catch (error) {
+            alert('잠시후 다시 시도 해주세요.');
             console.log(error);
         }
     };
@@ -101,12 +104,10 @@ const LoginWrapper = styled.section`
     height: 400px;
     border: 1px solid ${theme.borderColor};
     border-radius: 4px;
-    background-color: white;
 `;
 
 const Header = styled.header`
     width: 80%;
-    background-color: white;
 
     img {
         width: 100%;
@@ -119,7 +120,6 @@ const LoginForm = styled.form`
     flex-direction: column;
     align-items: center;
     width: 100%;
-    background-color: white;
 `;
 
 const Input = styled.input`
@@ -127,8 +127,10 @@ const Input = styled.input`
     height: 42px;
     margin: 15px 0px;
     padding: 0px 0px 0px 15px;
-    border: 1px solid ${({ helpText }) => (helpText ? theme.borderColor : 'red')};
+    border: 1px solid
+        ${({ helpText }) => (helpText ? theme.borderColor : 'red')};
     border-radius: 4px;
+    background-color: ${theme.bgColor};
 `;
 
 const Button = styled.button`
@@ -137,7 +139,8 @@ const Button = styled.button`
     margin: 15px 0px;
     border: none;
     border-radius: 4px;
-    background-color: ${({ isAble }) => (isAble ? theme.primary : theme.secondery)};
+    background-color: ${({ isAble }) =>
+        isAble ? theme.primary : theme.secondery};
     color: white;
     font-size: 18px;
     line-height: 30px;
