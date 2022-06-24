@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import theme from '../styles/theme';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -8,8 +8,10 @@ import TelegramIcon from '@mui/icons-material/Telegram';
 import TurnedInNotIcon from '@mui/icons-material/TurnedInNot';
 import Messenger from '../assets/images/messenger.png';
 import Comment from './Comment';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const Feed = ({ feedId, writer, feedImage, likeCount, comment }) => {
+    const [isLoad, setIsLoad] = useState(false);
     useEffect(() => {
         console.log('Feed~~~');
     }, []);
@@ -25,9 +27,23 @@ const Feed = ({ feedId, writer, feedImage, likeCount, comment }) => {
                 </div>
                 <MoreHorizIcon sx={{ fontSize: 40, color: '#575657' }} />
             </FeedHeader>
-            <FeedImage src={feedImage} alt="content" />
+
+            <div style={{ display: isLoad ? 'block' : 'none' }}>
+                <FeedImage
+                    src={feedImage}
+                    alt="content"
+                    onLoad={() => setIsLoad(true)}
+                />
+            </div>
+
+            {isLoad || (
+                <FeedLoadingImage>
+                    <CircularProgress />
+                </FeedLoadingImage>
+            )}
+
             <FeedFooter>
-                <div>
+                <div style={{ width: '114px' }}>
                     <FavoriteBorderIcon sx={{ fontSize: 30 }} />
                     <img src={Messenger} alt="icon" />
                     <TelegramIcon sx={{ fontSize: 30 }} />
@@ -47,8 +63,9 @@ const FeedWrapper = styled.section`
     flex-direction: column;
     margin-bottom: 20px;
     border-radius: 5px;
-    border: none;
+    border: 1px solid ${theme.borderColor};
     background-color: white;
+    overflow: hidden;
 `;
 
 const FeedHeader = styled.div`
@@ -76,6 +93,18 @@ const FeedHeader = styled.div`
 const FeedImage = styled.img`
     width: 100%;
     object-fit: contain;
+`;
+
+const FeedLoadingImage = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 500px;
+
+    @media all and (max-width: 600px) {
+        height: 300px;
+    }
 `;
 
 const FeedFooter = styled.div`

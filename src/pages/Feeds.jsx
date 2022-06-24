@@ -3,7 +3,6 @@ import { withAuth } from '../component/hoc/withAuth';
 import axios from 'axios';
 import styled from 'styled-components';
 import theme from '../styles/theme';
-
 import Navigation from '../component/Navigation';
 import Feed from '../component/Feed';
 

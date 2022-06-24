@@ -45,18 +45,8 @@
         },
         {
           "commentPk": 22,
-          "commentWriter": "rea",
-          "comment": "?? who are you"
-        },
-        {
-          "commentPk": 23,
-          "commentWriter": "rea",
-          "comment": " a... json 때문에 전체 리랜더링 되는구나"
-        },
-        {
-          "commentPk": 24,
-          "commentWriter": "rea",
-          "comment": "이걸 어케.. 해결 해야하는가.."
+          "commentWriter": "wanted",
+          "comment": "hello world"
         }
       ]
     },
@@ -75,7 +65,12 @@
         {
           "commentPk": 32,
           "commentWriter": "rea",
-          "comment": "어쩔수 없구만..."
+          "comment": "bye react"
+        },
+        {
+          "commentPk": 33,
+          "commentWriter": "wanted",
+          "comment": "render!"
         }
       ]
     }

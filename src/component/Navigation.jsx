@@ -3,15 +3,25 @@ import styled from 'styled-components';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import logo from '../assets/images/instagram_logo.png';
 import theme from '../styles/theme';
+import { useNavigate } from 'react-router-dom';
 
 const Navigation = () => {
+    const route = useNavigate();
+
+    const handleLogout = () => {
+        localStorage.removeItem('name');
+        localStorage.removeItem('isLogin');
+
+        route('/login');
+    };
+
     return (
         <Navbar>
             <Logo>
                 <img src={logo} alt="logo" />
             </Logo>
             <NavInput type="text" placeholder="검색" />
-            <LogoutButton>
+            <LogoutButton onClick={handleLogout}>
                 <ExitToAppIcon sx={{ fontSize: 40 }} />
             </LogoutButton>
         </Navbar>
