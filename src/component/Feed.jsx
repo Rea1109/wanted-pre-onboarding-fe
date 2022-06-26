@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import theme from '../styles/theme';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -12,9 +12,6 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 const Feed = ({ feedId, writer, feedImage, likeCount, comment }) => {
     const [isLoad, setIsLoad] = useState(false);
-    useEffect(() => {
-        console.log('Feed~~~');
-    }, []);
 
     return (
         <FeedWrapper>

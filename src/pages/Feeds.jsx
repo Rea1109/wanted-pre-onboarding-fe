@@ -16,7 +16,6 @@ const Feeds = () => {
 
     useEffect(() => {
         getFeeds();
-        console.log('feeds !!');
     }, []);
 
     return (

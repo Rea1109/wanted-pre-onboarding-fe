@@ -35,7 +35,6 @@ const Login = () => {
             route('/');
         } catch (error) {
             alert('잠시후 다시 시도 해주세요.');
-            console.log(error);
         }
     };
 
